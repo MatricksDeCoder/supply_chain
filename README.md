@@ -107,23 +107,7 @@ $ ganache-cli
 ```
 Run ganache-cli in different terminal and keep running when compiling,testing, migrating, running app etc
 
-5. Install and Run IPFS. Check if ipfs is not installed first with 
-```sh
-jsipfs version
-```
-If not installed install with below
-   Install IPFS and run it:
-```sh
-$ npm i -g ipfs 
-```
-
-6.  Run IPFS Node in a different terminal and keep running:
-If you have problems with ipfs connection during running app etc, restart the daemon 
-```sh
-$ jsipfs daemon
-```
-
-7. Install yarn if not installed. Check if installed using 
+6. Install yarn if not installed. Check if installed using 
 ```sh
 yarn --version
 ```
@@ -132,7 +116,7 @@ If not installed install with below
 $ npm install --global yarn
 ```
 
-8. Enter project directory and install dependancies
+7. Enter project directory and install dependancies
 ```sh
 $ cd nft_collectibles_masterclass
 $ yarn install  
@@ -182,7 +166,6 @@ Ensure truffle-config.js is properly confiured for the network you need to deplo
 Duplicate the .env.example file and rename it .env. Add the PRIVATE_KEYS as the private key of the Metamask 
 account you will use to deploy. This is the same account you will add testnet ether to. On Metamask click Account Details-> Export Private Key to copy private key. Go to [infura.io](https://infura.io/) and create a project and copy the ID into .env as INFURA_ID
 
-- Note you may want to restart => jsipfs daemon <= before deployign to each of the different networks. 
 - Note that you can use --reset when migrating to replace add new deployments 
 e.g truffle migrate --reset --network kovan
 
@@ -240,16 +223,3 @@ $ surge --domain asdfjkl.surge.sh
 ...and follow the instructions
 
 
-### Optional publish on IPFS
-
-1. Build app
-```sh
-$ yarn run build
-```
-2. Publish on IPFS
-```sh
-$ jsipfs add -r build
-```
-3. Copy the latest generated hash and paste into the place of hash below:
-https://ipfs.io/ipfs/hash For the first time may take a while to load dApp
-Create Human readable link [Use this site](https://bitly.com/)
