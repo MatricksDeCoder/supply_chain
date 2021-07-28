@@ -50,7 +50,8 @@ class App extends Component {
       name: '',
       custodian: '',
       actions: [],
-      loading: true
+      loading: true,
+      web3: ''
     }
   }
 
@@ -86,16 +87,23 @@ class App extends Component {
       await this.loadAsset()
       this.setState({ loading: false })
     })
+    
   }
 
   sendAsset = async (to) => {
     this.setState({ loading: true })
-    this.state.contract.methods.send(to).send({
-      from: this.state.account
-    }).once('receipt', async (receipt) => {
-      await this.loadAsset()
-      this.setState({ loading: false })
-    })
+    if(to === '' || !this.state.web3.utils.isAddress(to)) {
+      alert(`Invalid address!!!! Retry with valid address!`)
+      this.setState({loading: false})
+    } else {
+      this.state.contract.methods.send(to).send({
+        from: this.state.account
+      }).once('receipt', async (receipt) => {
+        await this.loadAsset()
+        this.setState({ loading: false })
+      })
+
+    }
   }
 
   receiveAsset = async () => {

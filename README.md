@@ -3,6 +3,9 @@
 ## 🔧 Project Diagram: - How it works
 ![Project Diagram/Workflow](https://i.gyazo.com/45e7658e882387f740d3a7d61fe34c3a.png)
 
+When you create an asset you can track it at page e.g http://localhost:3000/?address=0xCb7f003890B4aeDaEDC2d1478731F7812Fd84c6A
+You can share asset, or send asset to another party who is the new custodian and can receive the asset.
+
 ### Technology Stack and Tools
 
 * [Node Version Manager](https://heynode.com/tutorial/install-nodejs-locally-nvm) - node version manager
@@ -142,8 +145,21 @@ $ yarn install
 $ truffle compile 
 ```
 
+2. To test contracts on ganache_cli
+```sh
+$ truffle console --network ganache_cli
+$ test
+```
+To exit console use .exit
+
+3. To test contracts on ganache_gui
+```sh
+$ truffle console --network ganache_gui
+$ test
+```
+
 Make sure your truffle.js or truffle-config.js file is properly configured for development environment.
-2. Migrate contracts to local running instance ganache 
+4. Migrate contracts to local running instance ganache 
 If using ganache-cli use 
 ```sh
 $ truffle migrate --reset --network ganache_cli
@@ -153,33 +169,7 @@ If using ganache gui use
 $ truffle migrate --reset --network ganache_gui
 ```
 
-3. To test contracts on ganache_cli
-```sh
-$ truffle console --network ganache_cli
-$ test
-```
-To exit console use .exit
-
-4. To test contracts on ganache_gui
-```sh
-$ truffle console --network ganache_gui
-$ test
-```
-
-5. Interact with locally deployed contracts and excute script to mint tokens. Esnure jsipfs daemon is running 
-inand always running in a seperate terminal 
-
-If using ganache-cli use
-```sh
-$ truffle exec src/backEnd/scripts/mint.js --network ganache_cli
-$
-```
-If using ganache gui use
-```sh
-$ truffle exec src/backEnd/scripts/mint.js --network ganache_gui
-$
-```
-
+Copy private_keys of a few accounts in ganache and import into Metamask to interact with account with funds. 
 6. Run app on localhost front-end
 ```sh
 $ yarn start
@@ -201,20 +191,12 @@ Get Kovan ETH into a Metamask account from this [Kovan faucet click here](https:
 ```sh
 $ truffle migrate  --network kovan
 ```
-Mint tokens on Kovan network
-```sh
-$ truffle exec src/backEnd/scripts/mint.js --network kovan
-```
 You can verify deployment, check transactions etc on [https://kovan.etherscan.io/](https://kovan.etherscan.io/)
 
 2. Migrate contracts to Ethereum Rinkeby testnet. You will need Rinkeby ETH to pay for transactions. 
 Get Rinkeby ETH into a Metamask account from this [Rinkeby faucet click here](http://rinkeby-faucet.com/). Copy your Metamask address into site and click "Submit" or this [Rinkey Faucet here](https://faucet.rinkeby.io/) which is prone to not working at times. Alternatively reach out to us on Slack for some Rinkeby ETH. 
 ```sh
 $ truffle migrate --network rinkeby
-```
-Mint tokens on Kovan network
-```sh
-$ truffle exec src/backEnd/scripts/mint.js --network rinkeby
 ```
 You can verify deployment, check transactions etc on [https://rinkeby.etherscan.io/](https://rinkeby.etherscan.io/)
 
@@ -228,21 +210,13 @@ You may get Ropsten ETH through below faucets:
 ```sh
 $ truffle migrate --network ropsten
 ```
-Mint tokens on Ropsten network
-```sh
-$ truffle exec src/backEnd/scripts/mint.js --network ropsten
-```
 You can verify deployment, check transactions etc on [https://ropsten.etherscan.io/](https://ropsten.etherscan.io/)
 
 4. Migrate contracts to Ethereum Mainnet. You will need real value ETH in the account. You can buy from exchanges or on Metamask Buy services. 
 ```sh
 $ truffle migrate --network main
 ```
-Mint tokens on Mainnet network
-```sh
-$ truffle exec src/backEnd/scripts/mint.js --network main
-```
-you can verify deployment, check transactions etc on [https://etherscan.io/](https://etherscan.io/)
+You can verify deployment, check transactions etc on [https://etherscan.io/](https://etherscan.io/)
 
 ### Optional publish front end to Surge
 1. Run build and enter build directory
